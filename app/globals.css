@@ -1,0 +1,314 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/*
+ * LingoSphere — yangi dizayn tizimi
+ * Palitra: iris (binafsha-indigo, asosiy) · ember (iliq marjon-to'q sariq, aksent) · ink (kremdan tungi indigogacha neytral)
+ * Shriftlar: Unbounded (sarlavhalar) · Manrope (matn). Ikkalasida ham kirill va lotin bor.
+ */
+
+@theme {
+  --font-sans: "Manrope", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans", sans-serif;
+  --font-display: "Unbounded", "Manrope", ui-sans-serif, system-ui, sans-serif;
+
+  --color-iris-50: #f1f0ff;
+  --color-iris-100: #e4e1ff;
+  --color-iris-200: #ccc7ff;
+  --color-iris-300: #ada4ff;
+  --color-iris-400: #8d7eff;
+  --color-iris-500: #7459f6;
+  --color-iris-600: #6240e8;
+  --color-iris-700: #5232c9;
+  --color-iris-800: #432aa3;
+  --color-iris-900: #382682;
+  --color-iris-950: #20154f;
+
+  --color-ember-50: #fff4ed;
+  --color-ember-100: #ffe6d4;
+  --color-ember-200: #ffcba8;
+  --color-ember-300: #ffa871;
+  --color-ember-400: #ff8038;
+  --color-ember-500: #f9631a;
+  --color-ember-600: #ea4a10;
+  --color-ember-700: #c2370f;
+  --color-ember-800: #9a2f14;
+  --color-ember-900: #7c2b14;
+  --color-ember-950: #43130a;
+
+  --color-ink-50: #faf9f6;
+  --color-ink-100: #f2f0ea;
+  --color-ink-200: #e6e3db;
+  --color-ink-300: #d0ccc3;
+  --color-ink-400: #9b98a8;
+  --color-ink-500: #706d84;
+  --color-ink-600: #55536b;
+  --color-ink-700: #3d3b53;
+  --color-ink-800: #2a2845;
+  --color-ink-900: #1b1933;
+  --color-ink-950: #0f0d22;
+
+  /* Yumshoqroq, yirikroq burchaklar */
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+  --radius-2xl: 1.375rem;
+  --radius-3xl: 1.875rem;
+}
+
+:root {
+  --canvas-bg: #faf9f6;
+  --surface-bg: #ffffff;
+  --text-main: #1b1933;
+  --text-muted: #706d84;
+  --border-color: #e6e3db;
+}
+
+.dark,
+[data-theme="dark"] {
+  --canvas-bg: #0b0a1a;
+  --surface-bg: #14122a;
+  --text-main: #f5f3ff;
+  --text-muted: #9b98a8;
+  --border-color: #2a2845;
+  color-scheme: dark;
+}
+
+html.dark,
+body.dark,
+.dark {
+  background-color: #0b0a1a !important;
+  color: #f5f3ff;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--canvas-bg);
+  color: var(--text-main);
+  transition: background-color 0.25s ease, color 0.25s ease;
+  -webkit-font-smoothing: antialiased;
+}
+
+.font-display {
+  font-family: var(--font-display);
+  letter-spacing: -0.02em;
+}
+
+/* Fon: nozik nuqtali setka + yumshoq yorug'lik */
+.bg-dotgrid {
+  background-image: radial-gradient(circle at 1px 1px, rgb(112 109 132 / 0.22) 1px, transparent 0);
+  background-size: 22px 22px;
+}
+
+.hero-glow {
+  background:
+    radial-gradient(60% 55% at 15% 10%, rgb(116 89 246 / 0.22), transparent 70%),
+    radial-gradient(50% 50% at 90% 20%, rgb(249 99 26 / 0.16), transparent 70%);
+}
+
+.dark .hero-glow {
+  background:
+    radial-gradient(60% 55% at 15% 10%, rgb(116 89 246 / 0.32), transparent 70%),
+    radial-gradient(50% 50% at 90% 20%, rgb(249 99 26 / 0.2), transparent 70%);
+}
+
+/* Scrollbar'ni yashirish (tablar uchun) */
+.scrollbar-none {
+  scrollbar-width: none;
+}
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+
+/* Audio Wave Pulse Animation */
+@keyframes audioPulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1.18);
+    opacity: 0.35;
+  }
+}
+
+.animate-audio-pulse {
+  animation: audioPulse 1.4s ease-in-out infinite;
+}
+
+/* Equalizer Bars */
+@keyframes eqBar {
+  0%,
+  100% {
+    height: 6px;
+  }
+  50% {
+    height: 24px;
+  }
+}
+
+.eq-bar-1 { animation: eqBar 0.8s ease-in-out infinite; }
+.eq-bar-2 { animation: eqBar 0.6s ease-in-out infinite 0.15s; }
+.eq-bar-3 { animation: eqBar 0.9s ease-in-out infinite 0.3s; }
+.eq-bar-4 { animation: eqBar 0.7s ease-in-out infinite 0.2s; }
+
+/* Hero: suzuvchi salomlashuv kartochkalari */
+@keyframes floaty {
+  0%,
+  100% {
+    transform: translateY(0) rotate(var(--tilt, 0deg));
+  }
+  50% {
+    transform: translateY(-10px) rotate(var(--tilt, 0deg));
+  }
+}
+
+.floaty {
+  animation: floaty 6s ease-in-out infinite;
+}
+
+/* Modal paydo bo'lishi */
+@keyframes modalIn {
+  from {
+    opacity: 0;
+    transform: translateY(14px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.animate-modal-in {
+  animation: modalIn 0.22s ease-out both;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.2s ease-out both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .floaty,
+  .animate-modal-in,
+  .animate-fade-in {
+    animation: none;
+  }
+}
+
+/*
+ * Responsive: 300px, 320px, 330px, 340px, 350px, 360px dan 760px gacha
+ */
+
+@media (max-width: 760px) {
+  .app-container {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+  .grid-language-cards {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    gap: 0.875rem;
+  }
+  .vocab-grid {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    gap: 0.875rem;
+  }
+}
+
+@media (max-width: 360px) {
+  html {
+    font-size: 14.5px;
+  }
+  .app-container {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+  .action-btn-compact {
+    padding-left: 0.625rem;
+    padding-right: 0.625rem;
+    font-size: 0.8rem;
+  }
+  .voice-studio-target-word {
+    font-size: 1.75rem;
+    line-height: 2rem;
+  }
+}
+
+@media (max-width: 350px) {
+  html {
+    font-size: 14px;
+  }
+  .nav-brand-title {
+    font-size: 1.05rem;
+  }
+  .voice-mic-circle {
+    width: 4.75rem;
+    height: 4.75rem;
+  }
+}
+
+@media (max-width: 340px) {
+  html {
+    font-size: 13.5px;
+  }
+  .tab-pill-btn {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    font-size: 0.75rem;
+  }
+  .voice-mic-circle {
+    width: 4.25rem;
+    height: 4.25rem;
+  }
+}
+
+@media (max-width: 330px) {
+  html {
+    font-size: 13px;
+  }
+  .stat-badge-text {
+    font-size: 0.7rem;
+  }
+  .card-padding-adaptive {
+    padding: 0.75rem;
+  }
+}
+
+@media (max-width: 320px) {
+  html {
+    font-size: 12.5px;
+  }
+  .app-container {
+    padding-left: 0.35rem;
+    padding-right: 0.35rem;
+  }
+  .voice-studio-target-word {
+    font-size: 1.45rem;
+    line-height: 1.75rem;
+  }
+  .btn-responsive-text {
+    font-size: 0.75rem;
+    padding: 0.4rem 0.6rem;
+  }
+}
+
+@media (max-width: 300px) {
+  html {
+    font-size: 12px;
+  }
+  .app-container {
+    padding-left: 0.25rem;
+    padding-right: 0.25rem;
+  }
+  .header-actions {
+    gap: 0.25rem;
+  }
+  .voice-mic-circle {
+    width: 3.75rem;
+    height: 3.75rem;
+  }
+}

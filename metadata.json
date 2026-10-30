@@ -1,0 +1,6 @@
+{
+  "name": "LingoSphere - Ko'p Tilli Til O'rganish Platformasi",
+  "description": "20 ta jahon tili, har bir tilda 1,000+ o'quv so'zi, Web Speech API ovozli talaffuz va ovozni tekshirish, alifbo, grammatika, dark rejim va interaktiv testlar.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
